@@ -5,10 +5,30 @@ const App = () => {
   return (
     <View
       style={{
-        backgroundColor: 'red',
-        height: 500,
+        backgroundColor: '#faf',
+        height: 660,
         width: 413,
-      }}></View>
+        alignItems: 'center',
+        // alignItems: 'flex-end',
+        justifyContent: 'center',
+        // justifyContent: 'flex-end',
+      }}>
+      <View
+        style={{
+          height: 200,
+          width: 200,
+          backgroundColor: '#aaf',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <View
+          style={{
+            height: 100,
+            width: 100,
+            backgroundColor: '#a3f',
+          }}></View>
+      </View>
+    </View>
   );
 };
 
