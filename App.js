@@ -6,26 +6,62 @@ const App = () => {
     <View
       style={{
         backgroundColor: '#faf',
-        height: 660,
-        width: 413,
-        alignItems: 'center',
+        flex: 1,
+        // alignItems: 'center',
         // alignItems: 'flex-end',
-        justifyContent: 'center',
+        // justifyContent: 'center',
         // justifyContent: 'flex-end',
       }}>
       <View
         style={{
-          height: 200,
-          width: 200,
+          height: '40%',
+          width: '100%',
           backgroundColor: '#aaf',
-          alignItems: 'center',
-          justifyContent: 'center',
+          // alignItems: 'center',
+          // justifyContent: 'space-between',
+          // justifyContent: 'space-around',
+          justifyContent: 'space-evenly',
+          // flexDirection: 'row',
         }}>
         <View
           style={{
             height: 100,
             width: 100,
             backgroundColor: '#a3f',
+          }}></View>
+
+        <View
+          style={{
+            height: 100,
+            width: 100,
+            backgroundColor: '#aa3',
+          }}></View>
+      </View>
+
+      <View
+        style={{
+          height: '40%',
+          width: '100%',
+          backgroundColor: '#af1',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          // justifyContent: 'space-around',
+          // justifyContent: 'space-evenly',
+          flexDirection: 'row',
+        }}>
+        <View
+          style={{
+            height: 100,
+            width: 100,
+            backgroundColor: '#a3f',
+            marginLeft: 15,
+          }}></View>
+
+        <View
+          style={{
+            height: 100,
+            width: 100,
+            backgroundColor: '#aa3',
           }}></View>
       </View>
     </View>
