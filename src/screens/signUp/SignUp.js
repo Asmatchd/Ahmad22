@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, TextInput} from 'react-native';
 
-export class BasicsTwo extends React.Component {
+export class SignUp extends React.Component {
   render() {
     return (
       <View
@@ -48,6 +48,35 @@ export class BasicsTwo extends React.Component {
             }}>
             Welcome{'\n'}to MyApp.
           </Text>
+        </View>
+
+        <View
+          style={{
+            marginTop: 30,
+            alignItems: 'center',
+          }}>
+          <TextInput
+            style={{
+              height: 60,
+              width: '70%',
+              // backgroundColor: '#aaf',
+              borderColor: '#0002',
+              // borderWidth: 0.5,
+              borderTopWidth: 1,
+              borderLeftWidth: 2,
+              borderRightWidth: 3,
+              borderBottomWidth: 4,
+              borderRadius: 10,
+              paddingLeft: 10,
+              color: 'red',
+              fontSize: 20,
+              // fontWeight: 'bold',
+            }}
+            placeholder={'Name'}
+            placeholderTextColor={'red'}
+            // editable={false}
+            // value={'Study class'}
+          />
         </View>
       </View>
     );
