@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TextInput} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 
 export class SignUp extends React.Component {
   render() {
@@ -52,11 +52,12 @@ export class SignUp extends React.Component {
 
         <View
           style={{
-            marginTop: 30,
+            flex: 1,
             alignItems: 'center',
           }}>
           <TextInput
             style={{
+              marginTop: 30,
               height: 60,
               width: '70%',
               // backgroundColor: '#aaf',
@@ -74,9 +75,31 @@ export class SignUp extends React.Component {
             }}
             placeholder={'Name'}
             placeholderTextColor={'red'}
-            // editable={false}
+            editable={false}
             // value={'Study class'}
           />
+
+          <TouchableOpacity
+            style={{
+              marginTop: 20,
+              height: 50,
+              width: '50%',
+              backgroundColor: '#4AAB7E',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: 25,
+            }}
+            // disabled={true}
+          >
+            <Text
+              style={{
+                color: '#fff',
+                fontSize: 20,
+                fontWeight: 'bold',
+              }}>
+              Sign Up
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
