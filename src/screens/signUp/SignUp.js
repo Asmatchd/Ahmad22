@@ -2,6 +2,10 @@ import React from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 
 export class SignUp extends React.Component {
+  study = () => {
+    console.warn('Study');
+  };
+
   render() {
     return (
       <View
@@ -80,6 +84,10 @@ export class SignUp extends React.Component {
           />
 
           <TouchableOpacity
+            onPress={() => {
+              // console.warn('Study');
+              this.study();
+            }}
             style={{
               marginTop: 20,
               height: 50,
