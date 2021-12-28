@@ -2,8 +2,12 @@ import React from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 
 export class SignUp extends React.Component {
+  state = {
+    name: '',
+  };
+
   study = () => {
-    console.warn('Study');
+    console.warn(this.state.name);
   };
 
   render() {
@@ -60,6 +64,7 @@ export class SignUp extends React.Component {
             alignItems: 'center',
           }}>
           <TextInput
+            onChangeText={txt => this.setState({name: txt})}
             style={{
               marginTop: 30,
               height: 60,
@@ -79,7 +84,7 @@ export class SignUp extends React.Component {
             }}
             placeholder={'Name'}
             placeholderTextColor={'red'}
-            editable={false}
+            // editable={false}
             // value={'Study class'}
           />
 
