@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
-
+import {AppBtn} from '../../components';
 export class SignUp extends React.Component {
   state = {
-    name: '',
+    name: 'Study class',
   };
 
   study = () => {
@@ -85,34 +85,15 @@ export class SignUp extends React.Component {
             placeholder={'Name'}
             placeholderTextColor={'red'}
             // editable={false}
-            // value={'Study class'}
+            value={this.state.name}
           />
 
-          <TouchableOpacity
+          <AppBtn
+            txt={'Sign Up'}
             onPress={() => {
-              // console.warn('Study');
               this.study();
             }}
-            style={{
-              marginTop: 20,
-              height: 50,
-              width: '50%',
-              backgroundColor: '#4AAB7E',
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderRadius: 25,
-            }}
-            // disabled={true}
-          >
-            <Text
-              style={{
-                color: '#fff',
-                fontSize: 20,
-                fontWeight: 'bold',
-              }}>
-              Sign Up
-            </Text>
-          </TouchableOpacity>
+          />
         </View>
       </View>
     );
