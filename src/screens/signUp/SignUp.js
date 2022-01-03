@@ -91,7 +91,8 @@ export class SignUp extends React.Component {
           <AppBtn
             txt={'Sign Up'}
             onPress={() => {
-              this.study();
+              // this.study();
+              this.props.navigation.navigate('Basics');
             }}
           />
         </View>
