@@ -18,8 +18,8 @@ export class Dashboard extends react.Component {
           rightPress={() => {
             console.warn('2');
           }}
-          leftIc={'<'}
-          rightIc={'>'}
+          leftIc={'ios-arrow-back'}
+          rightIc={'exit-outline'}
         />
       </View>
     );

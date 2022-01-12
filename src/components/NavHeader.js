@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
 export class NavHeader extends React.Component {
   render() {
     return (
@@ -19,13 +19,7 @@ export class NavHeader extends React.Component {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: 'bold',
-            }}>
-            {this.props.leftIc}
-          </Text>
+          <Ionicons name={this.props.leftIc} size={20} color={'red'} />
         </TouchableOpacity>
 
         <View
@@ -46,13 +40,7 @@ export class NavHeader extends React.Component {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: 'bold',
-            }}>
-            {this.props.rightIc}
-          </Text>
+          <Ionicons name={this.props.rightIc} size={20} color={'red'} />
         </TouchableOpacity>
       </View>
     );
