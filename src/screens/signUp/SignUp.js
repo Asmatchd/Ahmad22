@@ -1,6 +1,11 @@
 import React from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
-import {AppBtn} from '../../components';
+import {
+  widthPercentageToDP as w,
+  heightPercentageToDP as h,
+} from 'react-native-responsive-screen';
+import {AppBtn, AppInput} from '../../components';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 export class SignUp extends React.Component {
   state = {
     name: 'Study class',
@@ -63,7 +68,7 @@ export class SignUp extends React.Component {
             flex: 1,
             alignItems: 'center',
           }}>
-          <TextInput
+          {/* <TextInput
             onChangeText={txt => this.setState({name: txt})}
             style={{
               marginTop: 30,
@@ -86,6 +91,39 @@ export class SignUp extends React.Component {
             placeholderTextColor={'red'}
             // editable={false}
             value={this.state.name}
+          /> */}
+
+          <AppInput
+            ic={'ios-person'}
+            placeholder={'Name'}
+            st={{
+              marginTop: h('2%'),
+            }}
+          />
+
+          <AppInput
+            ic={'ios-call'}
+            placeholder={'Phone'}
+            st={{
+              marginTop: h('2%'),
+            }}
+          />
+
+          <AppInput
+            ic={'ios-mail'}
+            placeholder={'Email'}
+            st={{
+              marginTop: h('2%'),
+            }}
+          />
+
+          <AppInput
+            ic={'lock-closed'}
+            placeholder={'Password'}
+            st={{
+              marginTop: h('2%'),
+              // borderColor: '#000',
+            }}
           />
 
           <AppBtn
