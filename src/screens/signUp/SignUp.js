@@ -4,71 +4,71 @@ import {
   widthPercentageToDP as w,
   heightPercentageToDP as h,
 } from 'react-native-responsive-screen';
-import {AppBtn, AppInput} from '../../components';
+import {AppBtn, AppInput, PasswordInput} from '../../components';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 export class SignUp extends React.Component {
   state = {
-    name: 'Study class',
+    name: '',
+    phone: '',
+    email: '',
+    password: '',
+    hide: true,
   };
 
-  study = () => {
-    console.warn(this.state.name);
+  creatUser = () => {
+    console.warn(
+      'Name = ' +
+        this.state.name +
+        '\n' +
+        'Phone = ' +
+        this.state.phone +
+        '\n' +
+        'Email = ' +
+        this.state.email +
+        '\n' +
+        'Password = ' +
+        this.state.password,
+    );
   };
 
   render() {
     return (
-      <View
-        style={{
-          //   backgroundColor: '#faf',
-          flex: 1,
+      <KeyboardAwareScrollView
+        contentContainerStyle={{
+          flexGrow: 2,
         }}>
-        {/* <View
-          style={{
-            height: '10%',
-            backgroundColor: '#af33',
-            //   alignItems: 'center',
-            //   justifyContent: 'center',
-          }}>
-          <Text
-            style={{
-              color: '#aaf',
-              fontSize: 25,
-              // fontStyle: 'italic',
-              fontWeight: 'bold',
-              textAlign: 'center',
-            }}
-            numberOfLines={2}>
-            I want to sell my{'\n'}Nokia 3.1plus 32GB Rom 3GB Ram final price
-            15k usage 6 months Contact no. 03082239826 City Ahmad pur East
-          </Text>
-        </View> */}
-
         <View
           style={{
-            height: '30%',
-            width: '80%',
-            backgroundColor: '#4AAB7E',
-            borderBottomRightRadius: 50,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Text
-            style={{
-              fontSize: 35,
-              fontWeight: 'bold',
-              color: '#fff',
-              marginTop: 30,
-            }}>
-            Welcome{'\n'}to MyApp.
-          </Text>
-        </View>
-
-        <View
-          style={{
+            //   backgroundColor: '#faf',
             flex: 1,
-            alignItems: 'center',
           }}>
-          {/* <TextInput
+          <View
+            style={{
+              height: h('30%'),
+              width: '80%',
+              backgroundColor: '#4AAB7E',
+              borderBottomRightRadius: 50,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Text
+              style={{
+                fontSize: 35,
+                fontWeight: 'bold',
+                color: '#fff',
+                marginTop: 30,
+              }}>
+              Welcome{'\n'}to MyApp.
+            </Text>
+          </View>
+
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'center',
+            }}>
+            {/* <TextInput
             onChangeText={txt => this.setState({name: txt})}
             style={{
               marginTop: 30,
@@ -93,48 +93,57 @@ export class SignUp extends React.Component {
             value={this.state.name}
           /> */}
 
-          <AppInput
-            ic={'ios-person'}
-            placeholder={'Name'}
-            st={{
-              marginTop: h('2%'),
-            }}
-          />
+            <AppInput
+              onChangeText={txt => this.setState({name: txt})}
+              ic={'ios-person'}
+              placeholder={'Name'}
+              st={{
+                marginTop: h('2%'),
+              }}
+            />
 
-          <AppInput
-            ic={'ios-call'}
-            placeholder={'Phone'}
-            st={{
-              marginTop: h('2%'),
-            }}
-          />
+            <AppInput
+              onChangeText={txt => this.setState({phone: txt})}
+              ic={'ios-call'}
+              placeholder={'Phone'}
+              st={{
+                marginTop: h('2%'),
+              }}
+            />
 
-          <AppInput
-            ic={'ios-mail'}
-            placeholder={'Email'}
-            st={{
-              marginTop: h('2%'),
-            }}
-          />
+            <AppInput
+              onChangeText={txt => this.setState({email: txt})}
+              ic={'ios-mail'}
+              placeholder={'Email'}
+              st={{
+                marginTop: h('2%'),
+              }}
+            />
 
-          <AppInput
-            ic={'lock-closed'}
-            placeholder={'Password'}
-            st={{
-              marginTop: h('2%'),
-              // borderColor: '#000',
-            }}
-          />
+            <PasswordInput
+              onChangeText={txt => this.setState({password: txt})}
+              ic={'lock-closed'}
+              placeholder={'Password'}
+              secureTextEntry={this.state.hide}
+              icPress={() => this.setState({hide: !this.state.hide})}
+              rightIc={
+                this.state.hide === true ? 'eye-outline' : 'eye-off-outline'
+              }
+              st={{
+                marginTop: h('2%'),
+                // borderColor: '#000',
+              }}
+            />
 
-          <AppBtn
-            txt={'Sign Up'}
-            onPress={() => {
-              // this.study();
-              this.props.navigation.navigate('Basics');
-            }}
-          />
+            <AppBtn
+              txt={'Sign Up'}
+              onPress={() => {
+                this.creatUser();
+              }}
+            />
+          </View>
         </View>
-      </View>
+      </KeyboardAwareScrollView>
     );
   }
 }
