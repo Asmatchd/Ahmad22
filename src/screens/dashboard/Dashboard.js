@@ -32,6 +32,9 @@ export class Dashboard extends react.Component {
             alignItems: 'center',
           }}>
           <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate('EditProfile');
+            }}
             style={{
               height: h('10%'),
               width: '90%',

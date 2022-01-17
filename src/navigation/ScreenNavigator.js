@@ -4,6 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {SignUp} from '../screens/signUp/SignUp';
 import {Basics} from '../screens/Basics';
 import {Dashboard} from '../screens/dashboard';
+import {EditProfile} from '../screens/editProfile';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,14 +13,19 @@ export const ScreenNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="SignUp"
-          component={SignUp}
+          name="Dashboard"
+          component={Dashboard}
           options={{headerShown: false}}
         />
 
         <Stack.Screen
-          name="Dashboard"
-          component={Dashboard}
+          name="EditProfile"
+          component={EditProfile}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="SignUp"
+          component={SignUp}
           options={{headerShown: false}}
         />
 

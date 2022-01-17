@@ -4,12 +4,12 @@ import {
   widthPercentageToDP as w,
   heightPercentageToDP as h,
 } from 'react-native-responsive-screen';
-import {AppBtn, AppInput, PasswordInput} from '../../components';
+import {AppBtn, AppInput, NavHeader, PasswordInput} from '../../components';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export class SignUp extends React.Component {
+export class EditProfile extends React.Component {
   state = {
     name: '',
     phone: '',
@@ -18,26 +18,23 @@ export class SignUp extends React.Component {
     hide: true,
   };
 
-  creatUser = () => {
-    if (
-      this.state.name === '' ||
-      this.state.phone === '' ||
-      this.state.email === '' ||
-      this.state.password === ''
-    ) {
-      alert('All fields are required');
-    } else {
-      const data = {
-        name: this.state.name,
-        phone: this.state.phone,
-        email: this.state.email,
-        password: this.state.password,
-      };
+  componentDidMount = () => {
+    this.creatUser();
+  };
 
-      AsyncStorage.setItem('userData', JSON.stringify(data), () => {
-        this.props.navigation.replace('Dashboard');
-      });
-    }
+  creatUser = () => {
+    AsyncStorage.getItem('userData', (err, res) => {
+      if (!err && res !== null) {
+        const data = JSON.parse(res);
+
+        this.setState({
+          name: data.name,
+          phone: data.phone,
+          email: data.email,
+          password: data.password,
+        });
+      }
+    });
   };
 
   render() {
@@ -51,56 +48,16 @@ export class SignUp extends React.Component {
             //   backgroundColor: '#faf',
             flex: 1,
           }}>
-          <View
-            style={{
-              height: h('30%'),
-              width: '80%',
-              backgroundColor: '#4AAB7E',
-              borderBottomRightRadius: 50,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <Text
-              style={{
-                fontSize: 35,
-                fontWeight: 'bold',
-                color: '#fff',
-                marginTop: 30,
-              }}>
-              Welcome{'\n'}to MyApp.
-            </Text>
-          </View>
-
+          <NavHeader
+            title={'Edit Profile'}
+            leftIc={'ios-arrow-back'}
+            leftPress={() => this.props.navigation.goBack()}
+          />
           <View
             style={{
               flex: 1,
               alignItems: 'center',
             }}>
-            {/* <TextInput
-            onChangeText={txt => this.setState({name: txt})}
-            style={{
-              marginTop: 30,
-              height: 60,
-              width: '70%',
-              // backgroundColor: '#aaf',
-              borderColor: '#0002',
-              // borderWidth: 0.5,
-              borderTopWidth: 1,
-              borderLeftWidth: 2,
-              borderRightWidth: 3,
-              borderBottomWidth: 4,
-              borderRadius: 10,
-              paddingLeft: 10,
-              color: 'red',
-              fontSize: 20,
-              // fontWeight: 'bold',
-            }}
-            placeholder={'Name'}
-            placeholderTextColor={'red'}
-            // editable={false}
-            value={this.state.name}
-          /> */}
-
             <AppInput
               onChangeText={txt => this.setState({name: txt})}
               ic={'ios-person'}
@@ -108,6 +65,7 @@ export class SignUp extends React.Component {
               st={{
                 marginTop: h('2%'),
               }}
+              value={this.state.name}
             />
 
             <AppInput
@@ -119,6 +77,7 @@ export class SignUp extends React.Component {
               }}
               keyboardType={'number-pad'}
               maxLength={11}
+              value={this.state.phone}
             />
 
             <AppInput
@@ -128,6 +87,7 @@ export class SignUp extends React.Component {
               st={{
                 marginTop: h('2%'),
               }}
+              value={this.state.email}
             />
 
             <PasswordInput
@@ -143,13 +103,14 @@ export class SignUp extends React.Component {
                 marginTop: h('2%'),
                 // borderColor: '#000',
               }}
+              value={this.state.password}
             />
 
             <AppBtn
-              txt={'Sign Up'}
-              onPress={() => {
-                this.creatUser();
-              }}
+              txt={'Update'}
+              //   onPress={() => {
+              //     this.creatUser();
+              //   }}
             />
           </View>
         </View>
