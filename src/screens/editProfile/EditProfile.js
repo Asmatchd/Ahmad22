@@ -26,7 +26,6 @@ export class EditProfile extends React.Component {
     AsyncStorage.getItem('userData', (err, res) => {
       if (!err && res !== null) {
         const data = JSON.parse(res);
-
         this.setState({
           name: data.name,
           phone: data.phone,

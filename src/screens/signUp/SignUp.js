@@ -8,6 +8,7 @@ import {AppBtn, AppInput, PasswordInput} from '../../components';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import validator from 'email-validator';
 
 export class SignUp extends React.Component {
   state = {
@@ -19,24 +20,35 @@ export class SignUp extends React.Component {
   };
 
   creatUser = () => {
-    if (
-      this.state.name === '' ||
-      this.state.phone === '' ||
-      this.state.email === '' ||
-      this.state.password === ''
-    ) {
-      alert('All fields are required');
-    } else {
-      const data = {
-        name: this.state.name,
-        phone: this.state.phone,
-        email: this.state.email,
-        password: this.state.password,
-      };
+    let {name, phone, email, password} = this.state;
 
-      AsyncStorage.setItem('userData', JSON.stringify(data), () => {
-        this.props.navigation.replace('Dashboard');
-      });
+    const check = validator.validate(email);
+
+    if (name === '') {
+      alert('Name is required');
+    } else {
+      if (phone.length < 11) {
+        alert('Invalid Phone number');
+      } else {
+        if (check) {
+          if (password.length < 8) {
+            alert('Password must contain 8 characters');
+          } else {
+            const data = {
+              name,
+              phone,
+              email,
+              password,
+            };
+
+            AsyncStorage.setItem('userData', JSON.stringify(data), () => {
+              this.props.navigation.replace('Dashboard');
+            });
+          }
+        } else {
+          alert('Invalid email address');
+        }
+      }
     }
   };
 

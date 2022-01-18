@@ -6,8 +6,14 @@ import {
   heightPercentageToDP as h,
 } from 'react-native-responsive-screen';
 import {NavHeader} from '../../components';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export class Dashboard extends react.Component {
+  removeUser = () => {
+    AsyncStorage.removeItem('userData');
+    console.warn('User removed');
+  };
+
   render() {
     return (
       <View
@@ -20,7 +26,7 @@ export class Dashboard extends react.Component {
             console.warn('1');
           }}
           rightPress={() => {
-            console.warn('2');
+            this.removeUser();
           }}
           leftIc={'ios-arrow-back'}
           rightIc={'exit-outline'}
