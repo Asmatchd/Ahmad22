@@ -5,6 +5,7 @@ import {SignUp} from '../screens/signUp/SignUp';
 import {Basics} from '../screens/Basics';
 import {Dashboard} from '../screens/dashboard';
 import {EditProfile} from '../screens/editProfile';
+import {List} from '../screens/list';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,6 +13,11 @@ export const ScreenNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="List"
+          component={List}
+          options={{headerShown: false}}
+        />
         <Stack.Screen
           name="SignUp"
           component={SignUp}
