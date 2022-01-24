@@ -1,4 +1,3 @@
-import react from 'react';
 import React from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import {
@@ -8,7 +7,7 @@ import {
 import {NavHeader} from '../../components';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export class Dashboard extends react.Component {
+export class Dashboard extends React.Component {
   removeUser = () => {
     AsyncStorage.removeItem('userData');
     console.warn('User removed');
