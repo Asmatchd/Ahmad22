@@ -5,7 +5,6 @@ import {
   heightPercentageToDP as h,
 } from 'react-native-responsive-screen';
 import {NavHeader} from '../../components';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export class MultiList extends React.Component {
   state = {
