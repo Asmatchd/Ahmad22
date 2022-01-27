@@ -14,15 +14,17 @@ export const ScreenNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="MultiList"
-          component={MultiList}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
           name="List"
           component={List}
           options={{headerShown: false}}
         />
+
+        <Stack.Screen
+          name="MultiList"
+          component={MultiList}
+          options={{headerShown: false}}
+        />
+
         <Stack.Screen
           name="SignUp"
           component={SignUp}
