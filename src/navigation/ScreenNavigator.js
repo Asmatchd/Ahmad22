@@ -5,7 +5,8 @@ import {SignUp} from '../screens/signUp/SignUp';
 import {Basics} from '../screens/Basics';
 import {Dashboard} from '../screens/dashboard';
 import {EditProfile} from '../screens/editProfile';
-import {List, MultiList} from '../screens/list';
+import {MultiList} from '../screens/list';
+import {TabNavigator} from './TabNavigator';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,8 +15,8 @@ export const ScreenNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="List"
-          component={List}
+          name="TabNavigator"
+          component={TabNavigator}
           options={{headerShown: false}}
         />
 
@@ -28,12 +29,6 @@ export const ScreenNavigator = () => {
         <Stack.Screen
           name="SignUp"
           component={SignUp}
-          options={{headerShown: false}}
-        />
-
-        <Stack.Screen
-          name="Dashboard"
-          component={Dashboard}
           options={{headerShown: false}}
         />
 

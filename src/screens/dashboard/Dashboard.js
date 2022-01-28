@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TextInput, TouchableOpacity} from 'react-native';
+import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import {
   widthPercentageToDP as w,
   heightPercentageToDP as h,
@@ -21,20 +21,21 @@ export class Dashboard extends React.Component {
         }}>
         <NavHeader
           title={'Dashboard'}
-          leftPress={() => {
-            console.warn('1');
-          }}
+          // leftPress={() => {
+          //   console.warn('1');
+          // }}
           rightPress={() => {
             this.removeUser();
           }}
-          leftIc={'ios-arrow-back'}
+          // leftIc={'ios-arrow-back'}
           rightIc={'exit-outline'}
         />
 
-        <View
-          style={{
-            flex: 1,
+        <ScrollView
+          contentContainerStyle={{
+            flexGrow: 2,
             alignItems: 'center',
+            paddingBottom: 10,
           }}>
           <TouchableOpacity
             onPress={() => {
@@ -143,7 +144,7 @@ export class Dashboard extends React.Component {
             }}>
             <Text>Server Flat List</Text>
           </TouchableOpacity>
-        </View>
+        </ScrollView>
       </View>
     );
   }

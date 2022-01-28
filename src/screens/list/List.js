@@ -65,6 +65,7 @@ export class List extends React.Component {
         img: require('../../assets/3.jpg'),
       },
     ],
+    refresh: false,
   };
 
   renderDesign = (item, index) => (
@@ -197,13 +198,24 @@ export class List extends React.Component {
     </View>
   );
 
+  refreshControl = () => {
+    this.setState({refresh: true}, () => {
+      setTimeout(() => {
+        this.setState({refresh: false});
+      }, 3000);
+    });
+  };
+
   render() {
     return (
       <View
         style={{
           flex: 1,
         }}>
-        <NavHeader title={'FlatList'} leftIc={'ios-arrow-back'} />
+        <NavHeader
+          title={'FlatList'}
+          // leftIc={'ios-arrow-back'}
+        />
 
         <View
           style={{
@@ -230,6 +242,8 @@ export class List extends React.Component {
             renderItem={({item, index}) => this.renderDesign(item, index)}
             keyExtractor={(index, item) => item.toString()}
             showsVerticalScrollIndicator={false}
+            refreshing={this.state.refresh}
+            onRefresh={() => this.refreshControl()}
           />
         </View>
       </View>
