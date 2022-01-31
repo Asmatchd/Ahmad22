@@ -3,10 +3,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {SignUp} from '../screens/signUp/SignUp';
 import {Basics} from '../screens/Basics';
-import {Dashboard} from '../screens/dashboard';
 import {EditProfile} from '../screens/editProfile';
 import {MultiList} from '../screens/list';
-import {TabNavigator} from './TabNavigator';
+import {DrawerNavigator} from './DrawerNavigator';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,8 +14,8 @@ export const ScreenNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="TabNavigator"
-          component={TabNavigator}
+          name="DrawerNavigator"
+          component={DrawerNavigator}
           options={{headerShown: false}}
         />
 

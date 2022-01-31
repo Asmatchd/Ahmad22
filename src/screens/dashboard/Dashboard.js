@@ -21,13 +21,13 @@ export class Dashboard extends React.Component {
         }}>
         <NavHeader
           title={'Dashboard'}
-          // leftPress={() => {
-          //   console.warn('1');
-          // }}
+          leftPress={() => {
+            this.props.navigation.openDrawer();
+          }}
           rightPress={() => {
             this.removeUser();
           }}
-          // leftIc={'ios-arrow-back'}
+          leftIc={'options'}
           rightIc={'exit-outline'}
         />
 
@@ -56,6 +56,9 @@ export class Dashboard extends React.Component {
           </TouchableOpacity>
 
           <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate('List');
+            }}
             style={{
               height: h('10%'),
               width: '90%',
@@ -71,6 +74,9 @@ export class Dashboard extends React.Component {
           </TouchableOpacity>
 
           <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate('MultiList');
+            }}
             style={{
               height: h('10%'),
               width: '90%',
