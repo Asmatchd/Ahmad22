@@ -6,6 +6,7 @@ import {Basics} from '../screens/Basics';
 import {EditProfile} from '../screens/editProfile';
 import {MultiList} from '../screens/list';
 import {DrawerNavigator} from './DrawerNavigator';
+import {ImgPicker} from '../screens/imgPicker';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,6 +14,11 @@ export const ScreenNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="ImgPicker"
+          component={ImgPicker}
+          options={{headerShown: false}}
+        />
         <Stack.Screen
           name="DrawerNavigator"
           component={DrawerNavigator}
