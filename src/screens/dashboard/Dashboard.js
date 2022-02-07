@@ -92,6 +92,9 @@ export class Dashboard extends React.Component {
           </TouchableOpacity>
 
           <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate('DateTime');
+            }}
             style={{
               height: h('10%'),
               width: '90%',
@@ -122,6 +125,9 @@ export class Dashboard extends React.Component {
           </TouchableOpacity>
 
           <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate('ImgPicker');
+            }}
             style={{
               height: h('10%'),
               width: '90%',

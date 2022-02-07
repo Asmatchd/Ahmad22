@@ -7,6 +7,7 @@ import {EditProfile} from '../screens/editProfile';
 import {MultiList} from '../screens/list';
 import {DrawerNavigator} from './DrawerNavigator';
 import {ImgPicker} from '../screens/imgPicker';
+import {DateTime} from '../screens/dateTime';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,19 +16,25 @@ export const ScreenNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="ImgPicker"
-          component={ImgPicker}
+          name="DrawerNavigator"
+          component={DrawerNavigator}
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="DrawerNavigator"
-          component={DrawerNavigator}
+          name="DateTime"
+          component={DateTime}
           options={{headerShown: false}}
         />
 
         <Stack.Screen
           name="MultiList"
           component={MultiList}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="ImgPicker"
+          component={ImgPicker}
           options={{headerShown: false}}
         />
 
