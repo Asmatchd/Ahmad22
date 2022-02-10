@@ -8,6 +8,7 @@ import {MultiList} from '../screens/list';
 import {DrawerNavigator} from './DrawerNavigator';
 import {ImgPicker} from '../screens/imgPicker';
 import {DateTime} from '../screens/dateTime';
+import {LearnCalendar} from '../screens/learnCalendar';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,11 @@ export const ScreenNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="LearnCalendar"
+          component={LearnCalendar}
+          options={{headerShown: false}}
+        />
         <Stack.Screen
           name="DrawerNavigator"
           component={DrawerNavigator}
