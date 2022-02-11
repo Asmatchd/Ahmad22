@@ -4,13 +4,19 @@ import {
   widthPercentageToDP as w,
   heightPercentageToDP as h,
 } from 'react-native-responsive-screen';
-import {NavHeader} from '../../components';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {NavHeader, Loading} from '../../components';
 
 export class Dashboard extends React.Component {
-  removeUser = () => {
-    AsyncStorage.removeItem('userData');
-    console.warn('User removed');
+  state = {
+    showLoading: false,
+  };
+
+  controlLoading = value => {
+    this.setState({showLoading: value}, () => {
+      setTimeout(() => {
+        this.setState({showLoading: false});
+      }, 3000);
+    });
   };
 
   render() {
@@ -19,16 +25,17 @@ export class Dashboard extends React.Component {
         style={{
           flex: 1,
         }}>
+        <Loading showLoading={this.state.showLoading} />
         <NavHeader
           title={'Dashboard'}
           leftPress={() => {
             this.props.navigation.openDrawer();
           }}
-          rightPress={() => {
-            this.removeUser();
-          }}
           leftIc={'options'}
-          rightIc={'exit-outline'}
+          rightIc={'reload'}
+          rightPress={() => {
+            this.controlLoading(true);
+          }}
         />
 
         <ScrollView
@@ -110,6 +117,7 @@ export class Dashboard extends React.Component {
           </TouchableOpacity>
 
           <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('LearnCalendar')}
             style={{
               height: h('10%'),
               width: '90%',
@@ -154,7 +162,7 @@ export class Dashboard extends React.Component {
               alignItems: 'center',
               marginTop: h('2'),
             }}>
-            <Text>Server Flat List</Text>
+            <Text>Loading - Elements</Text>
           </TouchableOpacity>
         </ScrollView>
       </View>

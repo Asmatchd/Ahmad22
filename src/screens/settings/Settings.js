@@ -4,8 +4,14 @@ import {
   widthPercentageToDP as w,
   heightPercentageToDP as h,
 } from 'react-native-responsive-screen';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export class Settings extends React.Component {
+  removeUser = () => {
+    AsyncStorage.removeItem('userData');
+    console.warn('User removed');
+  };
+
   render() {
     return (
       <View
@@ -16,7 +22,7 @@ export class Settings extends React.Component {
         }}>
         <TouchableOpacity
           onPress={() => {
-            console.warn('1');
+            this.removeUser();
           }}
           style={{
             height: h('8'),
