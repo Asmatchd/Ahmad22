@@ -5,7 +5,7 @@ import {
   heightPercentageToDP as h,
 } from 'react-native-responsive-screen';
 import {NavHeader} from '../../components';
-import {ButtonGroup} from 'react-native-elements';
+import {ButtonGroup, Avatar} from 'react-native-elements';
 
 export class Elements extends React.Component {
   state = {
@@ -67,6 +67,14 @@ export class Elements extends React.Component {
         />
 
         <Text>Selected Button is {this.state.txt}</Text>
+
+        <Avatar
+          size={'xlarge'}
+          rounded
+          source={{uri: 'https://randomuser.me/api/portraits/women/547.jpg'}}
+          title="Bj"
+          containerStyle={{backgroundColor: 'red'}}
+        />
       </View>
     );
   }
