@@ -4,68 +4,34 @@ import {
   widthPercentageToDP as w,
   heightPercentageToDP as h,
 } from 'react-native-responsive-screen';
-import {NavHeader} from '../../components';
+import {NavHeader, Loading} from '../../components';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
+import {axiosInstance, baseUrl} from '../../services/Api';
 
 export class List extends React.Component {
   state = {
-    data: [
-      {
-        name: 'Ali',
-        fName: 'Umer',
-        dob: '10-09-2010',
-        img: require('../../assets/1.jpg'),
-      },
-      {
-        name: 'Kamran',
-        fName: 'Ali',
-        dob: '10-09-2000',
-        img: require('../../assets/2.jpg'),
-      },
-      {
-        name: 'Ali',
-        fName: 'Umer',
-        dob: '10-09-2010',
-        img: require('../../assets/3.jpg'),
-      },
-      {
-        name: 'Ali',
-        fName: 'Umer',
-        dob: '10-09-2010',
-        img: require('../../assets/1.jpg'),
-      },
-      {
-        name: 'Kamran',
-        fName: 'Ali',
-        dob: '10-09-2000',
-        img: require('../../assets/2.jpg'),
-      },
-      {
-        name: 'Ali',
-        fName: 'Umer',
-        dob: '10-09-2010',
-        img: require('../../assets/3.jpg'),
-      },
-      {
-        name: 'Ali',
-        fName: 'Umer',
-        dob: '10-09-2010',
-        img: require('../../assets/1.jpg'),
-      },
-      {
-        name: 'Kamran',
-        fName: 'Ali',
-        dob: '10-09-2000',
-        img: require('../../assets/2.jpg'),
-      },
-      {
-        name: 'Ali',
-        fName: 'Umer',
-        dob: '10-09-2010',
-        img: require('../../assets/3.jpg'),
-      },
-    ],
+    data: [],
     refresh: false,
+    showLoading: false,
+  };
+
+  componentDidMount = () => {
+    this.controlLoading(true);
+    this.getUsers();
+  };
+
+  getUsers = () => {
+    axiosInstance
+      .get(baseUrl + 'users')
+      .then(res => {
+        this.controlLoading(false);
+        this.setState({data: res.data});
+      })
+      .catch(err => {
+        this.controlLoading(false);
+        alert(err.message);
+      });
   };
 
   renderDesign = (item, index) => (
@@ -92,7 +58,7 @@ export class List extends React.Component {
             width: h('10%'),
             borderRadius: h('5'),
           }}
-          source={item.img}
+          source={{uri: item.avatar_url}}
           // source={{
           //   uri: 'https://unsplash.com/photos/M4H2VN8dTIk',
           // }}
@@ -107,9 +73,9 @@ export class List extends React.Component {
           justifyContent: 'center',
           paddingLeft: h('2%'),
         }}>
-        <Text>Name: {item.name}</Text>
-        <Text>FName: {item.fName}</Text>
-        <Text>DOB: {item.dob}</Text>
+        <Text>Name: {item.login}</Text>
+        <Text>Type: {item.type}</Text>
+        <Text>User ID: {item.node_id}</Text>
       </View>
 
       <TouchableOpacity
@@ -149,7 +115,7 @@ export class List extends React.Component {
             width: h('10%'),
             borderRadius: h('5'),
           }}
-          source={item.img}
+          source={{uri: item.avatar_url}}
           // source={{
           //   uri: 'https://unsplash.com/photos/M4H2VN8dTIk',
           // }}
@@ -169,19 +135,19 @@ export class List extends React.Component {
           style={{
             color: '#fff',
           }}>
-          Name: {item.name}
+          Name: {item.login}
         </Text>
         <Text
           style={{
             color: '#fff',
           }}>
-          FName: {item.fName}
+          Type: {item.type}
         </Text>
         <Text
           style={{
             color: '#fff',
           }}>
-          DOB: {item.dob}
+          User ID: {item.node_id}
         </Text>
       </View>
 
@@ -206,12 +172,15 @@ export class List extends React.Component {
     });
   };
 
+  controlLoading = value => this.setState({showLoading: value});
+
   render() {
     return (
       <View
         style={{
           flex: 1,
         }}>
+        <Loading showLoading={this.state.showLoading} />
         <NavHeader
           title={'FlatList'}
           // leftIc={'ios-arrow-back'}
